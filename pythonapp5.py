@@ -1,5 +1,8 @@
 import requests
 import bs4
+import collections
+
+WeatherReport = collections.namedtuple('WeatherReport', 'cond, temp, scale, loc')
 
 def main():
     print_the_header()
@@ -8,8 +11,14 @@ def main():
 
     html = get_html_from_web(code)
 
-    get_weather_from_html(html)
+    report = get_weather_from_html(html)
 
+    print('The Temp in {} is {} {} and {}'.format(
+        report.loc,
+        report.temp,
+        report.scale,
+        report.cond,
+    ))
 
 
 
@@ -38,7 +47,29 @@ def get_weather_from_html(html):
     temp = soup.find(id='curTemp').find(class_='wx-value').get_text()
     scale = soup.find(id='curTemp').find(class_='wx-unit').get_text()
 
-    print(loc, condition, temp, scale)
+    loc = cleanup_text(loc)
+    loc = find_city_state_from_location(loc)
+    condition = cleanup_text(condition)
+    temp = cleanup_text(temp)
+    scale = cleanup_text(scale)
+
+    # print(condition, temp, scale, loc)
+    # return condition, temp, scale, loc
+    report = WeatherReport(cond=condition, temp=temp, scale=scale, loc=loc)
+    return report
+
+
+def find_city_state_from_location(loc: str):
+    parts = loc.split('\n')
+    return parts[0].strip()
+
+
+def cleanup_text(text: str):
+    if not text:
+        return text
+
+    text = text.strip()
+    return text
 
 if __name__ == '__main__':
     main()
