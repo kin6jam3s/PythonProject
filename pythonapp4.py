@@ -1,6 +1,4 @@
 import journal
-# from journal import load, save
-# from journal import *
 
 
 def main():
@@ -48,5 +46,8 @@ def add_entries(data):
     text = input('Type your entry, <enter> to exit: ')
     journal.add_entry(text, data)
 
+print(__file__)
+print(__name__)
 
-main()
+if __name__ == '__main__':
+    main()
