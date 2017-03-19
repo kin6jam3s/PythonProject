@@ -1,7 +1,15 @@
+"""
+This is the journal Module
+"""
 import os
 
+
 def load(name):
-    # todo: populate from file if exists.
+    """
+    This method creates and loads a new journal
+    :param name: this base name of the journal to load
+    :return: Anew journal data structure populated with file data.
+    """
     data = []
     filename = get_full_pathname(name)
 
@@ -9,7 +17,6 @@ def load(name):
         with open(filename) as fin:
             for entry in fin.readlines():
                 data.append(entry.rstrip())
-
 
     return data
 
