@@ -13,15 +13,17 @@ def run_event_loop():
 
     print('What do you want to do with your journal')
     cmd = None
+    journal_data = []  # list()
+
 
     while cmd != 'x':
         cmd = input('[L]ist entry, [A]add entry, E[x]it: ')
         cmd = cmd.lower().strip()
 
         if cmd == 'l':
-            list_entries()
+            list_entries(journal_data)
         elif cmd == 'a':
-            add_entries()
+            add_entries(journal_data)
         elif cmd != 'x':
             print("Sorry, We don't understand '{}'.".format(cmd))
         else:
@@ -29,11 +31,15 @@ def run_event_loop():
     print('Good Bye')
 
 
-def list_entries():
-    print('Listing...')
+def list_entries(data):
+    print("Your Journal Entries")
+    entries = reversed(data)
+    for idx, entry in enumerate(entries):
+        print('*[{}] {}'.format(idx+1, entry))
 
 
-def add_entries():
-    print('Adding')
+def add_entries(data):
+    text = input('Type your entry, <enter> to exit: ')
+    data.append(text)
 
 main()
