@@ -1,6 +1,5 @@
 #import actors
-from actos import Wizard, Creature
-import random
+import PYTHON_PROJ_7_1
 
 def main()
 	print_header()

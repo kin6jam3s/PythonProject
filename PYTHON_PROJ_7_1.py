@@ -1,6 +1,6 @@
 ##########
 # Actors #
-##########
+
 
 class Wizard:
 	def __init__(self, name, level):	# Magic method

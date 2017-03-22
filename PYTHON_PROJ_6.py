@@ -44,8 +44,8 @@ def download_cats(folder):
     print('Connecting server to download cats...')
     cat_count = 8
     for i in range(1, cat_count+1):
-        #print(i, end=', ')
-        print(i)
+        print(i, end=', ')
+        # print(i)
         name = 'lolcat_{}'.format(i)  #save lolcat in dictionary
         print('Downloading cat' + name)
         PYTHON_PROJ_6_1.get_cat(folder, name)

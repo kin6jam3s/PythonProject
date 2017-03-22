@@ -18,5 +18,3 @@ def save_image(folder, name, data):
     file_name = os.path.join(folder, name + '.jpg')
     with open(file_name, 'wb') as fileout:
         shutil.copyfileobj(data, fileout)
-
-
