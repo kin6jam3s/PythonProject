@@ -1,39 +1,38 @@
-##########
-# Actors #
+import random
 
 
 class Wizard:
-	def __init__(self, name, level):	# Magic method
-		self.name = name
-		sel.level = level
-	!
-	
-	def attack(self, creature):
-		print("The wizard {} attacks {}!".formation(
-			self.name, creature.name
-		))
-		
-		my_roll = random.randomint(1, 12) * self.level
-		creatre_roll = random.randomint(1, 12) * creature.level
-		
-		print("you rool {}...".format(my_roll))
-		print("{} rolls {}...".format(creature.name, creature_roll))
-		
-		if my_roll >= creatre_roll:
-			print('the wizard handily defeated {}".format(creature.name))
-			return True
-		else:
-			print('the wizard has been defeated')
-			return False
-			
-	
+    # MAGIC METHOD
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
+
+    def attack(self, creature):
+        print("The wizard {} attacks {}!".format(
+            self.name, creature.name
+            ))
+
+        my_roll = random.randint(1, 12) * self.level
+        creature_roll = random.randint(1, 12) * creature.level
+
+        print("you roll {}...".format(my_roll))
+        print("{} rolls {}...".format(creature.name, creature_roll))
+
+        if my_roll >= creature_roll:
+            print('the wizard handily defeated {}'.format(creature.name))
+            return True
+        else:
+            print('the wizard has been defeated!!!')
+            return False
+
+
 class Creature:
-	def __init__(self, name, the_level):	# Magic method
-		self.name = name
-		sel.level = the_level
-		
-	
-	def __repr__(self):
-		return "Creature: {} of level {}".format(
-			self.name, self.level
-		)
+
+    def __init__(self, name, the_level):
+        self.name = name
+        self.level = the_level
+
+    def __repr__(self):
+        return "Creature: {} of level {}".format(
+            self.name, self.level
+        )
