@@ -1,4 +1,4 @@
-from PYTHON_PROJ_7_1 import Wizard, Creature
+from PYTHON_PROJ_7_1 import Wizard, Creature, SmallAnimal, Dragon
 import random
 import time
 
@@ -18,11 +18,11 @@ def print_header():
 def game_loop():
 
     creatures = [
-        Creature('Toad', 1),
+        SmallAnimal('Toad', 1),
         Creature('Tiger', 12),
-        Creature('Bat', 3),
-        Creature('Dragon', 50),
-        #Creature('Evil Wizard', 1000),
+        SmallAnimal('Bat', 3),
+        Dragon('Dragon', 50, 75, True),
+        Wizard('Evil Wizard', 1000),
     ]
 
     print(creatures)
