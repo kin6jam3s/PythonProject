@@ -24,7 +24,7 @@ def game_loop():
         Dragon('Dragon', 50, 75, True),
         Wizard('Evil Wizard', 1000),
     ]
-
+    # test
     print(creatures)
 
     hero = Wizard('Gandolf', 75)
