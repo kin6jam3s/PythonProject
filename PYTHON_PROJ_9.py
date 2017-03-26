@@ -74,12 +74,21 @@ def query_data(data):
 
     # most expensive house
     high_purchase = data[-1]
-    print("the most expensive house is {} with {} beds and {} baths".format(high_purchase.price,
-                                                                           high_purchase.beds, high_purchase.baths))
+    print("the most expensive house is {} with {} beds and {} baths in {} {}".format(high_purchase.price,
+                                                                           high_purchase.beds, high_purchase.baths,
+                                                                            high_purchase.street, high_purchase.city))
     # least expensive house
     low_purchase = data[0]
-    print("the least expensive house is {} with {} beds and {} baths".format(low_purchase.price,
-                                                                           low_purchase.beds, low_purchase.baths))
+    print("the least expensive house is {} with {} beds and {} baths in {} {} ".format(low_purchase.price,
+                                                                           low_purchase.beds, low_purchase.baths,
+                                                                                       low_purchase.street, low_purchase.city))
+    # price_count = 0
+    # for u in data:
+    #     price_count += 1
+    #
+    #     print(u.price)
+    #     print("{}, House in {} {} {} with {}, {} {} is {}".format(price_count, u.street, u.city, u.state, u.sq__ft,
+    #                                                               u.beds, u.baths, u.price))
 
 
 if __name__ == "__main__":
