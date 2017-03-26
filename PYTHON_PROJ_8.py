@@ -25,13 +25,14 @@ def main():
         match_count += 1
 
         # print(m)
-        # print('-----------Match---------')
-        # print('file: ' + m.file)
-        # print('line: {}'.format(m.line))
-        # print('matches: ' + m.text.rstrip())
-        # print()
+        print('-----------Match---------')
+        print('file: ' + m.file)
+        print('line: {}'.format(m.line))
+        print('matches: ' + m.text.rstrip())
+        print()
 
     print("Found {:,} matches".format(match_count))
+
 
 def print_header():
     print('------------------------------')
@@ -59,7 +60,7 @@ def get_search_text_from_user():
 def search_folders(folder, text):
     print("Would like to search {} for {}".format(folder, text))
 
-    all_matches = []
+    # all_matches = []
 
     items = os.listdir(folder)
 
@@ -68,19 +69,30 @@ def search_folders(folder, text):
     for item in items:
         full_item = os.path.join(folder, item)
         if os.path.isdir(full_item):
-            matches = search_folders(full_item, text)
-            all_matches.extend(matches)
+            # yield from search_folders(full_item, text)
+            # yield from search_folders(full_item, text)
+            # all_matches.extend(matches)
+            # for m in matches:
+            #     yield m
+
+            # yield from matches
+            yield from search_folders(full_item, text)
 
         else:
-            matches = search_file(full_item, text)
-            all_matches.extend(matches)
+            # yield search_file(full_item, text)
+            # yield from search_file(full_item, text)
+            # all_matches.extend(matches)
+            # for m in matches:
+            #     yield m
+            # yield from matches
+            yield from search_file(full_item, text)
 
-    return all_matches
+    # return all_matches
 
 
 def search_file(filename, search_text):
 
-    matches = []
+    # matches = []
     with open(filename, 'r', encoding='utf-8') as fin:
 
         line_num = 0
@@ -88,9 +100,10 @@ def search_file(filename, search_text):
             line_num += 1
             if line.lower().find(search_text) >= 0:
                 m = SearchResult(line=line_num, file=filename, text=line)
-                matches.append(m)
+                # matches.append(m)
+                yield m
 
-        return matches
+        # return matches
 
 if __name__ == '__main__':
     main()
