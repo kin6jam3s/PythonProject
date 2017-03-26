@@ -4,7 +4,9 @@ import collections
 SearchResult = collections.namedtuple('SearchResult',
                                       'file, line, text')
 
+
 def main():
+
     print_header()
 
     folder = get_folder_from_user()
@@ -18,14 +20,18 @@ def main():
         print("We can't search for nothing!")
 
     matches = search_folders(folder, text)
+    match_count = 0
     for m in matches:
-        # print(m)
-        print('-----------Match---------')
-        print('file: ' + m.file)
-        print('line: {}'.format(m.line))
-        print('matches: ' + m.text.rstrip())
-        print()
+        match_count += 1
 
+        # print(m)
+        # print('-----------Match---------')
+        # print('file: ' + m.file)
+        # print('line: {}'.format(m.line))
+        # print('matches: ' + m.text.rstrip())
+        # print()
+
+    print("Found {:,} matches".format(match_count))
 
 def print_header():
     print('------------------------------')
