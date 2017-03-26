@@ -40,10 +40,13 @@ def load_file(filename):
         for row in reader:
             # print(type(row), row)
             # print("Bed count: {}, type: {}".format(row['beds'], type(row['beds'])))
+            # print(row)
+            # print('----------------------------')
             p = Purchase.create_from_dict(row)
+            # print(p.__dict__)
             purchases.append(p)
 
-        # print(purchases[0].__dict__)
+        print(purchases[0].__dict__)
         return purchases
 
         #
