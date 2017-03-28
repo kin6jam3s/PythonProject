@@ -114,6 +114,7 @@ def query_data(data):
     #     print("{}, House in {} {} {} with {}, {} {} is {}".format(price_count, u.street, u.city, u.state, u.sq__ft,
     #                                                               u.beds, u.baths, u.price))
 
+# test
 
 if __name__ == "__main__":
     main()
