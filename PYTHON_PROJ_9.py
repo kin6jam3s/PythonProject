@@ -125,6 +125,8 @@ def query_data(data):
     #                                                               u.beds, u.baths, u.price))
 
 
+    # testing for merge
+    
 if __name__ == "__main__":
     main()
 
