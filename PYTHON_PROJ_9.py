@@ -1,5 +1,7 @@
 import csv
 import os
+import statistics
+
 
 from data_types import Purchase
 
@@ -68,20 +70,52 @@ def load_file(filename):
 #         print(lines[:5])
 
 
+
+# def get_price(p):
+    #return p.price
+
+
 def query_data(data):
 
     data.sort(key=lambda p: p.price)
 
     # most expensive house
     high_purchase = data[-1]
-    print("the most expensive house is {} with {} beds and {} baths in {} {}".format(high_purchase.price,
+    print("the most expensive house is $ {} with {} beds and {} baths in {} {}".format(high_purchase.price,
                                                                            high_purchase.beds, high_purchase.baths,
                                                                             high_purchase.street, high_purchase.city))
     # least expensive house
     low_purchase = data[0]
-    print("the least expensive house is {} with {} beds and {} baths in {} {} ".format(low_purchase.price,
-                                                                           low_purchase.beds, low_purchase.baths,
+    print("the least expensive house is $ {} with {} beds and {} baths in {} {} ".format(low_purchase.price,low_purchase.beds, low_purchase.baths,
                                                                                        low_purchase.street, low_purchase.city))
+   
+    
+    # average price house
+
+    prices = []
+    for pur in data:
+        prices.append(pur.price)
+        # statistics.mean(prices)
+    
+    ave_price = statistics.mean(prices)
+    print("The everage house price is ${:,}".format(int(ave_price)))
+
+    # average price of 2 bedroom houses
+    
+    price = []
+    for pur in data:
+        if pur.beds == 2:
+            prices.append(pur.price)
+    
+    ave_price = statistics.mean(prices)
+    print("the average home price for 2 bedroom hours is ${:,}".format(int(ave_price)))
+
+
+
+
+    
+
+    
     # price_count = 0
     # for u in data:
     #     price_count += 1
@@ -93,3 +127,13 @@ def query_data(data):
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
