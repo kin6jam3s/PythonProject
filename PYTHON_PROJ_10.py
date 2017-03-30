@@ -1,6 +1,7 @@
 from movie_client import MovieClient
 import requests.exceptions
 
+
 def main():
     print_header()
     search_event_loop()
